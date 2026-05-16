@@ -185,6 +185,13 @@ export default function Register() {
   return (
     <div className="auth-page">
       <div className="auth-card">
+        <div className="auth-logo-area">
+          <div className="auth-logo-badge" aria-hidden="true">+</div>
+          <div>
+            <p className="auth-app-name">MedBook</p>
+            <p className="auth-app-tagline">Professional Appointment Portal</p>
+          </div>
+        </div>
         <h1>Create Account</h1>
         <p className="subtitle">Sign up to start booking appointments</p>
 

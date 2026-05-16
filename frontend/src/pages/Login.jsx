@@ -106,6 +106,13 @@ export default function Login() {
   return (
     <div className="auth-page">
       <div className="auth-card">
+        <div className="auth-logo-area">
+          <div className="auth-logo-badge" aria-hidden="true">+</div>
+          <div>
+            <p className="auth-app-name">MedBook</p>
+            <p className="auth-app-tagline">Professional Appointment Portal</p>
+          </div>
+        </div>
         <h1>Welcome Back</h1>
         <p className="subtitle">Sign in to manage your appointments</p>
 

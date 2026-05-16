@@ -10,6 +10,7 @@ import ProtectedRoute from './components/ProtectedRoute.jsx';
 // Pages
 import Login from './pages/Login.jsx';
 import Register from './pages/Register.jsx';
+import Landing from './pages/Landing.jsx';
 import VerifyEmail from './pages/VerifyEmail.jsx';
 import Dashboard from './pages/Dashboard.jsx';
 import Slots from './pages/Slots.jsx';
@@ -30,17 +31,19 @@ function Navbar() {
   return (
     <nav className="navbar" role="navigation" aria-label="Main navigation">
       <Link to="/" className="navbar-brand" id="nav-brand">
-        Appointment Booking
+        MedBook
       </Link>
       <ul className="navbar-links">
         {!isAuthenticated ? (
           <>
+            <li><Link to="/" id="nav-home">Home</Link></li>
             <li><Link to="/slots" id="nav-slots">Browse Slots</Link></li>
             <li><Link to="/login" id="nav-login">Sign In</Link></li>
             <li><Link to="/register" id="nav-register">Register</Link></li>
           </>
         ) : (
           <>
+            <li><Link to="/" id="nav-home">Home</Link></li>
             <li><Link to="/slots" id="nav-slots">Browse Slots</Link></li>
             {isAdmin ? (
               <>
@@ -65,68 +68,6 @@ function Navbar() {
         )}
       </ul>
     </nav>
-  );
-}
-
-// ── Home Page (public slot browsing placeholder) ───────────────────────────
-function HomePage() {
-  const { isAuthenticated, isAdmin } = useAuth();
-
-  return (
-    <div className="main-content">
-      <div className="dashboard-header" style={{ textAlign: 'center', paddingTop: 'var(--space-3xl)' }}>
-        <h1 style={{
-          fontSize: 'var(--fs-3xl)',
-          fontWeight: 800,
-          background: 'linear-gradient(135deg, var(--clr-gradient-start), var(--clr-gradient-end))',
-          WebkitBackgroundClip: 'text',
-          WebkitTextFillColor: 'transparent',
-          backgroundClip: 'text',
-          marginBottom: 'var(--space-md)',
-        }}>
-          Book Your Appointment
-        </h1>
-        <p style={{ color: 'var(--clr-text-secondary)', fontSize: 'var(--fs-md)', maxWidth: '500px', margin: '0 auto var(--space-xl)' }}>
-          Browse available time slots and schedule your appointment in just a few clicks.
-        </p>
-        {!isAuthenticated && (
-          <div style={{ display: 'flex', gap: 'var(--space-md)', justifyContent: 'center', flexWrap: 'wrap' }}>
-            <Link to="/register" className="btn btn-primary" style={{ width: 'auto', padding: '14px 32px' }} id="hero-register">
-              Get Started
-            </Link>
-            <Link to="/login" className="btn btn-secondary" style={{ padding: '14px 32px' }} id="hero-login">
-              Sign In
-            </Link>
-          </div>
-        )}
-        {isAuthenticated && !isAdmin && (
-          <Link to="/dashboard" className="btn btn-primary" style={{ width: 'auto', padding: '14px 32px' }} id="hero-dashboard">
-            Go to Dashboard
-          </Link>
-        )}
-        {isAuthenticated && isAdmin && (
-          <Link to="/admin" className="btn btn-primary" style={{ width: 'auto', padding: '14px 32px' }} id="hero-admin">
-            Admin Dashboard
-          </Link>
-        )}
-      </div>
-
-      {/* Feature cards */}
-      <div className="stats-grid" style={{ marginTop: 'var(--space-3xl)', maxWidth: '900px', marginLeft: 'auto', marginRight: 'auto' }}>
-        <div className="stat-card">
-          <div className="stat-value" style={{ fontSize: 'var(--fs-xl)' }}>24/7</div>
-          <div className="stat-label">Available anytime — no phone calls needed</div>
-        </div>
-        <div className="stat-card">
-          <div className="stat-value" style={{ fontSize: 'var(--fs-xl)' }}>Instant</div>
-          <div className="stat-label">Real-time confirmation with email notification</div>
-        </div>
-        <div className="stat-card">
-          <div className="stat-value" style={{ fontSize: 'var(--fs-xl)' }}>Secure</div>
-          <div className="stat-label">Enterprise-grade encryption and authentication</div>
-        </div>
-      </div>
-    </div>
   );
 }
 
@@ -155,7 +96,7 @@ function AppRouter() {
       <Navbar />
       <Routes>
         {/* Public Routes */}
-        <Route path="/" element={<HomePage />} />
+        <Route path="/" element={<Landing />} />
         <Route path="/login" element={<Login />} />
         <Route path="/register" element={<Register />} />
         <Route path="/verify-email" element={<VerifyEmail />} />

@@ -112,8 +112,8 @@ export default function AdminSlots() {
             <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr 1fr', gap: 'var(--space-md)' }}>
               <div className="form-group" style={{ marginBottom: 0 }}>
                 <label htmlFor="slot-date">Date</label>
-                <input id="slot-date" className="form-input" type="date" value={form.date}
-                       onChange={(e) => setForm(p => ({ ...p, date: e.target.value }))} required />
+               <input id="slot-date" className="form-input" type="date" value={form.date}
+                       onChange={(e) => setForm(p => ({ ...p, date: e.target.value }))} required min={new Date().toISOString().split('T')[0]} />
               </div>
               <div className="form-group" style={{ marginBottom: 0 }}>
                 <label htmlFor="slot-start">Start Time</label>

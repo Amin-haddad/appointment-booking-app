@@ -14,26 +14,26 @@
 
 :root {
   /* ── Colour Palette ──────────────────────────────────────────────────── */
-  --clr-bg-primary:     #0a0a1a;
-  --clr-bg-secondary:   #111128;
-  --clr-bg-card:        rgba(255, 255, 255, 0.04);
-  --clr-bg-glass:       rgba(255, 255, 255, 0.06);
-  --clr-bg-input:       rgba(255, 255, 255, 0.08);
-  --clr-border:         rgba(255, 255, 255, 0.1);
-  --clr-border-focus:   rgba(102, 126, 234, 0.6);
-  --clr-text-primary:   #e8e8f0;
-  --clr-text-secondary: #9898b0;
-  --clr-text-muted:     #6868806e;
-  --clr-accent:         #667eea;
-  --clr-accent-hover:   #7c8ff5;
-  --clr-gradient-start:  #667eea;
-  --clr-gradient-end:    #764ba2;
-  --clr-success:        #38ef7d;
-  --clr-success-bg:     rgba(56, 239, 125, 0.1);
-  --clr-error:          #f5576c;
-  --clr-error-bg:       rgba(245, 87, 108, 0.1);
-  --clr-warning:        #f5af19;
-  --clr-warning-bg:     rgba(245, 175, 25, 0.1);
+  --clr-bg-primary:     #f1f5f9;
+  --clr-bg-secondary:   #e2e8f0;
+  --clr-bg-card:        #ffffff;
+  --clr-bg-glass:       rgba(255, 255, 255, 0.95);
+  --clr-bg-input:       #f8fafc;
+  --clr-border:         #d7e2f0;
+  --clr-border-focus:   rgba(37, 99, 235, 0.45);
+  --clr-text-primary:   #0f172a;
+  --clr-text-secondary: #475569;
+  --clr-text-muted:     #94a3b8;
+  --clr-accent:         #2563eb;
+  --clr-accent-hover:   #1d4ed8;
+  --clr-gradient-start: #2563eb;
+  --clr-gradient-end:   #1e40af;
+  --clr-success:        #15803d;
+  --clr-success-bg:     rgba(34, 197, 94, 0.12);
+  --clr-error:          #dc2626;
+  --clr-error-bg:       rgba(239, 68, 68, 0.12);
+  --clr-warning:        #b45309;
+  --clr-warning-bg:     rgba(245, 158, 11, 0.14);
 
   /* ── Typography ──────────────────────────────────────────────────────── */
   --font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
@@ -63,10 +63,10 @@
   --radius-full: 9999px;
 
   /* ── Shadows ─────────────────────────────────────────────────────────── */
-  --shadow-sm:   0 1px  3px rgba(0,0,0,0.3);
-  --shadow-md:   0 4px  12px rgba(0,0,0,0.3);
-  --shadow-lg:   0 8px  32px rgba(0,0,0,0.4);
-  --shadow-glow: 0 0 20px rgba(102, 126, 234, 0.3);
+  --shadow-sm:   0 2px 6px rgba(15, 23, 42, 0.08);
+  --shadow-md:   0 8px 24px rgba(15, 23, 42, 0.1);
+  --shadow-lg:   0 20px 50px rgba(15, 23, 42, 0.14);
+  --shadow-glow: 0 0 0 4px rgba(37, 99, 235, 0.12);
 
   /* ── Transitions ─────────────────────────────────────────────────────── */
   --transition-fast:   150ms ease;
@@ -85,7 +85,7 @@ body {
   font-size: var(--fs-base);
   line-height: 1.6;
   color: var(--clr-text-primary);
-  background: var(--clr-bg-primary);
+  background: linear-gradient(180deg, #f8fbff 0%, var(--clr-bg-primary) 100%);
   min-height: 100vh;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
@@ -130,9 +130,10 @@ a:hover {
   justify-content: space-between;
   padding: var(--space-md) var(--space-xl);
   background: var(--clr-bg-glass);
-  backdrop-filter: blur(20px);
-  -webkit-backdrop-filter: blur(20px);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
   border-bottom: 1px solid var(--clr-border);
+  box-shadow: var(--shadow-sm);
   position: sticky;
   top: 0;
   z-index: 100;
@@ -167,7 +168,7 @@ a:hover {
 
 .navbar-links a:hover,
 .navbar-links button:hover {
-  color: var(--clr-text-primary);
+  color: var(--clr-accent);
 }
 
 /* ── Auth Pages Layout ───────────────────────────────────────────────────── */
@@ -177,14 +178,13 @@ a:hover {
   justify-content: center;
   min-height: calc(100vh - 80px);
   padding: var(--space-xl);
+  background: radial-gradient(circle at top, rgba(37, 99, 235, 0.08), transparent 60%);
 }
 
 .auth-card {
   width: 100%;
   max-width: 460px;
-  background: var(--clr-bg-glass);
-  backdrop-filter: blur(24px);
-  -webkit-backdrop-filter: blur(24px);
+  background: var(--clr-bg-card);
   border: 1px solid var(--clr-border);
   border-radius: var(--radius-xl);
   padding: var(--space-2xl);
@@ -219,6 +219,39 @@ a:hover {
   color: var(--clr-text-secondary);
   font-size: var(--fs-sm);
   margin-bottom: var(--space-xl);
+}
+
+.auth-logo-area {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  margin-bottom: var(--space-md);
+}
+
+.auth-logo-badge {
+  width: 38px;
+  height: 38px;
+  border-radius: 10px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  background: linear-gradient(135deg, var(--clr-gradient-start), var(--clr-gradient-end));
+  color: #fff;
+  font-weight: 800;
+  font-size: 1.25rem;
+  box-shadow: var(--shadow-md);
+}
+
+.auth-app-name {
+  font-size: var(--fs-sm);
+  font-weight: 700;
+  line-height: 1.2;
+}
+
+.auth-app-tagline {
+  font-size: var(--fs-xs);
+  color: var(--clr-text-secondary);
 }
 
 /* ── Form Elements ───────────────────────────────────────────────────────── */
@@ -270,7 +303,7 @@ a:hover {
 }
 
 .form-error::before {
-  content: '⚠';
+  content: '!';
   font-size: 12px;
 }
 
@@ -314,13 +347,13 @@ a:hover {
 }
 
 .btn-secondary {
-  color: var(--clr-text-primary);
-  background: var(--clr-bg-input);
+  color: var(--clr-accent);
+  background: #ffffff;
   border: 1px solid var(--clr-border);
 }
 
 .btn-secondary:hover:not(:disabled) {
-  background: var(--clr-bg-glass);
+  background: #eff6ff;
   border-color: var(--clr-accent);
 }
 
@@ -475,13 +508,12 @@ a:focus-visible {
 }
 
 .stat-card {
-  background: var(--clr-bg-glass);
-  backdrop-filter: blur(16px);
-  -webkit-backdrop-filter: blur(16px);
+  background: var(--clr-bg-card);
   border: 1px solid var(--clr-border);
   border-radius: var(--radius-lg);
   padding: var(--space-xl);
   transition: transform var(--transition-fast), box-shadow var(--transition-fast);
+  box-shadow: var(--shadow-sm);
 }
 
 .stat-card:hover {
@@ -517,6 +549,111 @@ a:focus-visible {
 .verify-card .verify-icon {
   font-size: 3rem;
   margin-bottom: var(--space-md);
+}
+
+/* ── Landing Page ─────────────────────────────────────────────────────────── */
+.landing-page {
+  width: 100%;
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: var(--space-2xl) var(--space-md) var(--space-3xl);
+}
+
+.landing-hero {
+  text-align: center;
+  background: linear-gradient(160deg, #ffffff 0%, #eff6ff 100%);
+  border: 1px solid var(--clr-border);
+  border-radius: var(--radius-xl);
+  padding: clamp(2.25rem, 3vw, 4rem);
+  box-shadow: var(--shadow-md);
+}
+
+.landing-kicker {
+  display: inline-flex;
+  font-size: var(--fs-xs);
+  color: var(--clr-accent);
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  margin-bottom: var(--space-sm);
+}
+
+.landing-hero h1 {
+  font-size: var(--fs-3xl);
+  font-weight: 800;
+  margin-bottom: var(--space-sm);
+}
+
+.landing-tagline {
+  max-width: 640px;
+  margin: 0 auto var(--space-xl);
+  color: var(--clr-text-secondary);
+  font-size: var(--fs-md);
+}
+
+.landing-cta-row {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: var(--space-md);
+  flex-wrap: wrap;
+}
+
+.landing-section {
+  margin-top: var(--space-3xl);
+}
+
+.landing-section h2 {
+  text-align: center;
+  font-size: var(--fs-xl);
+  margin-bottom: var(--space-lg);
+}
+
+.landing-grid {
+  display: grid;
+  gap: var(--space-lg);
+  grid-template-columns: repeat(auto-fit, minmax(230px, 1fr));
+}
+
+.landing-grid-testimonials {
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+}
+
+.landing-card {
+  background: #ffffff;
+  border: 1px solid var(--clr-border);
+  border-radius: var(--radius-lg);
+  padding: var(--space-xl);
+  box-shadow: var(--shadow-sm);
+}
+
+.landing-card h3 {
+  font-size: var(--fs-md);
+  margin-bottom: var(--space-sm);
+}
+
+.landing-card p {
+  color: var(--clr-text-secondary);
+  font-size: var(--fs-sm);
+}
+
+.testimonial-quote {
+  font-style: italic;
+  margin-bottom: var(--space-sm);
+}
+
+.testimonial-author {
+  font-weight: 600;
+  color: var(--clr-text-primary);
+}
+
+.landing-footer {
+  margin-top: var(--space-3xl);
+  border-top: 1px solid var(--clr-border);
+  padding-top: var(--space-lg);
+  text-align: center;
+  color: var(--clr-text-secondary);
+  font-size: var(--fs-sm);
 }
 
 /* ── Responsive ──────────────────────────────────────────────────────────── */
